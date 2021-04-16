@@ -1,0 +1,13 @@
+define
+
+noun sub entity,
+    has text,
+    plays subject,
+    plays object;
+
+verb sub relationship,
+    has text,
+    relates subject,
+    relates object;
+
+text sub attribute, datatype string;
