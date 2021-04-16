@@ -10,11 +10,12 @@ name_dir = {
 }
 
 POS = {
-        "DET" : "determiner",
+        # "DET" : "determiner",
         "ADJ" : "adjective",
+        "ADV" : "adjective",
        "NOUN" : "noun",
        "VERB" : "verb",
-       "AUX" : "auxilliary-verb"
+       "AUX" : "verb"
        }
 
 def pre_process(direct = r"C:\Users\kunge\Downloads\AIEngineer\AIEngineer\gtc_AI.engineer_Projektbeschreibung\DEP_tables2"):
@@ -44,13 +45,20 @@ def table_to_garkn(table):
     help_list = []
     # if it is important add it to the table
     for j in table.index:
-        if table.loc[j,"POS"] in POS:
+        if table.loc[j,"POS"] == "noun":
+            # has text
+            # check if subject or object
             return_str = ""
-            return_str = "insert $" + str(table.loc[j,"LEMMA"]) + " isa " + str(POS[table.loc[j,"POS"]] + ";")
+            return_str = "insert $" + str(table.loc[j,"LEMMA"]) + " isa " + str(POS[table.loc[j,"POS"]] + " has text " +  str(table.loc[j,"LEMMA"]))
+            if "su" in table.loc[j,"DEP"]:
+                return_str.append("plays subject;")
+            else:
+                return_str.append("plays object;") 
             help_list.append(return_str)
+        if table.loc[j,"POS"] == "verb":
+            
+            # find out who it connect and build the connection
+        if table.loc[j,"POS"] == "adjective":
+            # assign adjective to noun or verb
+            
     return help_list
-            # if table.loc[j,"DEP"] != "ROOT":
-    #             #what is the index of the dependency?
-    #             return_str = return_str + ", has dependency " + str(table.at[table.loc[j,"head_text"],"LEMMA"])
-    #             print(return_str)
-    

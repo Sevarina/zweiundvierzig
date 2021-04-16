@@ -1,13 +1,13 @@
 define
 
-noun sub entity,
-    has text,
-    plays subject,
-    plays object;
+text sub attribute, value string;
 
-verb sub relationship,
-    has text,
+noun sub entity,
+    owns text,
+    plays verb:subject,
+    plays verb:object;
+
+verb sub relation,
+    owns text,
     relates subject,
     relates object;
-
-text sub attribute, datatype string;
