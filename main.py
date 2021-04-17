@@ -8,8 +8,10 @@ with Grakn.core_client("localhost:1729") as client:
     with client.session("hackathon", SessionType.DATA) as session:
         
 # # feed data into database
-#         with session.transaction(TransactionType.WRITE) as transaction:
-#             for item in help_list:
-#                 print("Executing Graql Query: " + str(item))
-#                 transaction.query().insert(item)
-#             transaction.commit()
+        with session.transaction(TransactionType.WRITE) as transaction:
+            for item in help_list:
+                transaction.query().insert(item)
+            transaction.commit()
+
+
+

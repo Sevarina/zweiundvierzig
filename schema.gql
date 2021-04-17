@@ -8,6 +8,5 @@ noun sub entity,
     plays verb:object;
 
 verb sub relation,
-    owns text,
     relates subject,
     relates object;
